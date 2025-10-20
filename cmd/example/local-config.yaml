@@ -1,0 +1,19 @@
+server:
+  id: 1
+  name: ginx-example
+  host: 127.0.0.1
+  port: 8321
+
+db:
+  type: sqlite
+  dbname: test.db
+
+log:
+  filename: ginx-example.log
+  dir_path: logs
+  log_level: info
+  maxsize: 10
+  maxbackups: 5
+  compress: true
+  to_stdout: true
+

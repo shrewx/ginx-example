@@ -1,0 +1,10 @@
+en:
+  error_codes:
+    "40000000001": bad request
+    "40000000002": invalid user ID, must be a positive integer
+    "40100000001": unauthorized
+    "40300000001": forbidden
+    "40400000001": not found
+    "40400000002": 'user not found, user ID: {{.UserID}}'
+    "40900000001": conflict
+    "50200000001": operation failed, please retry later

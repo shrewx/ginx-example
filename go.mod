@@ -2,12 +2,10 @@ module ginx-example
 
 go 1.24.3
 
-replace github.com/shrewx/ginx v1.1.4 => ../ginx
-
 require (
 	github.com/gin-gonic/gin v1.10.1
 	github.com/nicksnyder/go-i18n/v2 v2.6.0
-	github.com/shrewx/ginx v1.1.4
+	github.com/shrewx/ginx v1.2.0
 	github.com/spf13/cobra v1.5.0
 	github.com/stretchr/testify v1.11.1
 	gorm.io/driver/sqlite v1.6.0

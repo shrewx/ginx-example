@@ -1,0 +1,360 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "",
+    "version": ""
+  },
+  "paths": {
+    "/api/v1/users/users": {
+      "get": {
+        "tags": [
+          "ginx-example/apis/user"
+        ],
+        "summary": "ListUsers 获取用户列表接口",
+        "operationId": "ListUsers",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "页码，默认1",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "页码，默认1"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "每页数量，默认10，最大100",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "每页数量，默认10，最大100"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GinxExampleApisUserListUsersResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "\u003e\n* `[DataOperationFailed][50200000002]`\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GithubComShrewxGinxPkgStatuserrorStatusErr"
+                }
+              }
+            },
+            "x-status-errors": [
+              "[DataOperationFailed][50200000002]"
+            ]
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ginx-example/apis/user"
+        ],
+        "summary": "CreateUser 创建用户接口",
+        "operationId": "CreateUser",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/GinxExampleApisUserCreateUserRequest"
+                  },
+                  {
+                    "description": "创建用户请求体"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GinxExampleApisUserCreateUserResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "\u003e\n* `[DataOperationFailed][50200000002]`\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GithubComShrewxGinxPkgStatuserrorStatusErr"
+                }
+              }
+            },
+            "x-status-errors": [
+              "[DataOperationFailed][50200000002]"
+            ]
+          }
+        }
+      }
+    },
+    "/api/v1/users/users/{id}": {
+      "get": {
+        "tags": [
+          "ginx-example/apis/user"
+        ],
+        "summary": "GetUserInfo 获取用户信息接口",
+        "operationId": "GetUserInfo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "用户ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "用户ID"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GinxExampleApisUserGetUserInfoResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "\u003e\n* `[InvalidUserID][40000000002]`\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GithubComShrewxGinxPkgStatuserrorStatusErr"
+                }
+              }
+            },
+            "x-status-errors": [
+              "[InvalidUserID][40000000002]"
+            ]
+          },
+          "404": {
+            "description": "\u003e\n* `[UserNotFound][40400000002]`\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GithubComShrewxGinxPkgStatuserrorStatusErr"
+                }
+              }
+            },
+            "x-status-errors": [
+              "[UserNotFound][40400000002]"
+            ]
+          },
+          "502": {
+            "description": "\u003e\n* `[DataOperationFailed][50200000002]`\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GithubComShrewxGinxPkgStatuserrorStatusErr"
+                }
+              }
+            },
+            "x-status-errors": [
+              "[DataOperationFailed][50200000002]"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GinxExampleApisUserCreateUserRequest": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "邮箱地址，必填，唯一，格式验证"
+          },
+          "name": {
+            "type": "string",
+            "description": "真实姓名，1-100字符，必填"
+          },
+          "status": {
+            "type": "string",
+            "description": "用户状态，可选值：active/inactive，默认active"
+          },
+          "username": {
+            "type": "string",
+            "description": "用户名，3-50字符，必填，唯一"
+          }
+        },
+        "required": [
+          "username",
+          "email",
+          "name"
+        ],
+        "description": "CreateUserRequest 创建用户请求结构体",
+        "x-go-struct-name": "GinxExampleApisUserCreateUserRequest",
+        "x-go-vendor-type": "ginx-example/apis/user.CreateUserRequest"
+      },
+      "GinxExampleApisUserCreateUserResponse": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GinxExampleModelsUser"
+              },
+              {
+                "description": "创建的用户信息"
+              }
+            ]
+          }
+        },
+        "description": "CreateUserResponse 创建用户响应结构体",
+        "x-go-struct-name": "GinxExampleApisUserCreateUserResponse",
+        "x-go-vendor-type": "ginx-example/apis/user.CreateUserResponse"
+      },
+      "GinxExampleApisUserGetUserInfoResponse": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GinxExampleModelsUser"
+              },
+              {
+                "description": "用户信息"
+              }
+            ]
+          }
+        },
+        "description": "GetUserInfoResponse 获取用户信息响应结构体",
+        "x-go-struct-name": "GinxExampleApisUserGetUserInfoResponse",
+        "x-go-vendor-type": "ginx-example/apis/user.GetUserInfoResponse"
+      },
+      "GinxExampleApisUserListUsersResponse": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "description": "当前页码"
+          },
+          "page_size": {
+            "type": "integer",
+            "format": "int32",
+            "description": "每页数量"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64",
+            "description": "总用户数"
+          },
+          "users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GinxExampleModelsUser"
+            },
+            "description": "用户列表"
+          }
+        },
+        "description": "ListUsersResponse 用户列表响应结构体",
+        "x-go-struct-name": "GinxExampleApisUserListUsersResponse",
+        "x-go-vendor-type": "ginx-example/apis/user.ListUsersResponse"
+      },
+      "GinxExampleModelsUser": {
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TimeTime"
+              },
+              {
+                "description": "创建时间"
+              }
+            ]
+          },
+          "email": {
+            "type": "string",
+            "description": "邮箱地址"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "用户唯一标识符"
+          },
+          "name": {
+            "type": "string",
+            "description": "真实姓名"
+          },
+          "status": {
+            "type": "string",
+            "description": "用户状态"
+          },
+          "updated_at": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TimeTime"
+              },
+              {
+                "description": "更新时间"
+              }
+            ]
+          },
+          "username": {
+            "type": "string",
+            "description": "用户名"
+          }
+        },
+        "description": "User 用户信息实体",
+        "x-go-struct-name": "GinxExampleModelsUser",
+        "x-go-vendor-type": "ginx-example/models.User"
+      },
+      "GithubComShrewxGinxPkgStatuserrorStatusErr": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int64",
+            "description": "状态码"
+          },
+          "key": {
+            "type": "string",
+            "description": "错误名称"
+          },
+          "message": {
+            "type": "string",
+            "description": "消息"
+          }
+        },
+        "x-go-struct-name": "GithubComShrewxGinxPkgStatuserrorStatusErr",
+        "x-go-vendor-type": "github.com/shrewx/ginx/pkg/statuserror.StatusErr"
+      },
+      "TimeTime": {
+        "type": "string",
+        "format": "date-time",
+        "x-go-struct-name": "TimeTime",
+        "x-go-vendor-type": "time.Time"
+      }
+    }
+  }
+}

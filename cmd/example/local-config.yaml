@@ -11,7 +11,7 @@ db:
 log:
   filename: ginx-example.log
   dir_path: logs
-  log_level: info
+  log_level: debug
   maxsize: 10
   maxbackups: 5
   compress: true

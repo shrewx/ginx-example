@@ -37,7 +37,7 @@ func (g *GetUserInfo) Output(ctx *gin.Context) (interface{}, error) {
 	// 将字符串ID转换为int64
 	userID, err := strconv.ParseInt(g.ID, 10, 64)
 	if err != nil || userID <= 0 {
-		return nil, status_error.InvalidUserID
+		return nil, ginx.WithStack(status_error.InvalidUserID)
 	}
 
 	// 创建用户控制器
@@ -46,7 +46,7 @@ func (g *GetUserInfo) Output(ctx *gin.Context) (interface{}, error) {
 	// 查询用户信息
 	user, err := userController.GetUserByID(userID)
 	if err != nil {
-		return nil, err
+		return nil, ginx.WithStack(err)
 	}
 
 	// 返回用户信息

@@ -32,7 +32,7 @@ type ListUsersResponse struct {
 
 // Path 返回接口路径
 func (l *ListUsers) Path() string {
-	return "/users"
+	return ""
 }
 
 // Output 实现接口逻辑

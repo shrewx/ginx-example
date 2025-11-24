@@ -3,6 +3,7 @@ server:
   name: ginx-example
   host: 127.0.0.1
   port: 8321
+  show_params: true
 
 db:
   type: sqlite

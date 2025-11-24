@@ -29,7 +29,7 @@ type GetUserInfoResponse struct {
 
 // Path 返回接口路径
 func (g *GetUserInfo) Path() string {
-	return "/users/:id"
+	return "/:id"
 }
 
 // Output 实现接口逻辑

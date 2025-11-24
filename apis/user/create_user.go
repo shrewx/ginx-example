@@ -34,7 +34,7 @@ type CreateUserResponse struct {
 
 // Path 返回接口路径
 func (c *CreateUser) Path() string {
-	return "/users"
+	return ""
 }
 
 // Output 实现接口逻辑

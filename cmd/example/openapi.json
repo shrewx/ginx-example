@@ -45,12 +45,12 @@
               }
             }
           },
-          "502": {
+          "422": {
             "description": "\u003e\n* `[DataOperationFailed][50200000002]`\n",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GithubComShrewxGinxPkgStatuserrorStatusErr"
+                  "$ref": "#/components/schemas/GinxExampleConstantsStatusErrorServiceError"
                 }
               }
             },
@@ -94,12 +94,12 @@
               }
             }
           },
-          "502": {
+          "422": {
             "description": "\u003e\n* `[DataOperationFailed][50200000002]`\n",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GithubComShrewxGinxPkgStatuserrorStatusErr"
+                  "$ref": "#/components/schemas/GinxExampleConstantsStatusErrorServiceError"
                 }
               }
             },
@@ -140,43 +140,31 @@
               }
             }
           },
-          "400": {
-            "description": "\u003e\n* `[InvalidUserID][40000000002]`\n",
+          "422": {
+            "description": "\u003e\n* `[DataOperationFailed][50200000002]`\n* `[InvalidUserID][40000000002]`\n",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GithubComShrewxGinxPkgStatuserrorStatusErr"
+                  "$ref": "#/components/schemas/GinxExampleConstantsStatusErrorServiceError"
                 }
               }
             },
             "x-status-errors": [
+              "[DataOperationFailed][50200000002]",
               "[InvalidUserID][40000000002]"
             ]
           },
-          "404": {
+          "450": {
             "description": "\u003e\n* `[UserNotFound][40400000002]`\n",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GithubComShrewxGinxPkgStatuserrorStatusErr"
+                  "$ref": "#/components/schemas/GinxExampleConstantsStatusErrorServiceError"
                 }
               }
             },
             "x-status-errors": [
               "[UserNotFound][40400000002]"
-            ]
-          },
-          "502": {
-            "description": "\u003e\n* `[DataOperationFailed][50200000002]`\n",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GithubComShrewxGinxPkgStatuserrorStatusErr"
-                }
-              }
-            },
-            "x-status-errors": [
-              "[DataOperationFailed][50200000002]"
             ]
           }
         }
@@ -280,6 +268,21 @@
         "x-go-struct-name": "GinxExampleApisUserListUsersResponse",
         "x-go-vendor-type": "ginx-example/apis/user.ListUsersResponse"
       },
+      "GinxExampleConstantsStatusErrorServiceError": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Code 错误码"
+          },
+          "error": {
+            "type": "string",
+            "description": "Error 错误信息"
+          }
+        },
+        "x-go-struct-name": "GinxExampleConstantsStatusErrorServiceError",
+        "x-go-vendor-type": "ginx-example/constants/status_error.ServiceError"
+      },
       "GinxExampleModelsUser": {
         "type": "object",
         "properties": {
@@ -328,26 +331,6 @@
         "description": "User 用户信息实体",
         "x-go-struct-name": "GinxExampleModelsUser",
         "x-go-vendor-type": "ginx-example/models.User"
-      },
-      "GithubComShrewxGinxPkgStatuserrorStatusErr": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "format": "int64",
-            "description": "状态码"
-          },
-          "key": {
-            "type": "string",
-            "description": "错误名称"
-          },
-          "message": {
-            "type": "string",
-            "description": "消息"
-          }
-        },
-        "x-go-struct-name": "GithubComShrewxGinxPkgStatuserrorStatusErr",
-        "x-go-vendor-type": "github.com/shrewx/ginx/pkg/statuserror.StatusErr"
       },
       "TimeTime": {
         "type": "string",
